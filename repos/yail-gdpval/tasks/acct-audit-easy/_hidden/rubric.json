@@ -1,0 +1,33 @@
+{
+  "_README": "Compact authentic GDPval AFC KRI population. The prompt gives process requirements; this hidden key defines the exact risk criteria used by the grader.",
+  "selection_criteria": {
+    "variance_threshold": 0.15,
+    "high_risk_countries": ["Cayman Islands", "Pakistan", "UAE"],
+    "zero_value_selects": true
+  },
+  "sample_size_expectation": {
+    "note": "Accept a documented 90% confidence / 10% tolerable-error method. The task asks for a practical audit sample of 12-30 rows from a 120-row compact population.",
+    "plausible_n_range": [12, 30]
+  },
+  "correct_analysis": "A strong answer creates a parseable Sample.xlsx workbook with Sample Size Calculation, Risk Analysis, and Selected Sample tabs. It computes QoQ variance from the Q2/Q3 KRI columns, selects 12-30 traceable rows by No, and favors rows with greater than 15% absolute variance, zero Q2/Q3 values, or high-risk countries (Cayman Islands, Pakistan, UAE). The selected sample should cover at least three divisions and three countries and include a rationale for each selected row.",
+  "do_not_overreward": [
+    "Selecting the whole 120-row population instead of a sample.",
+    "Selecting rows that do not meet any risk criterion without a clear reason.",
+    "Submitting a text-only answer or workbook without the required tabs.",
+    "Dropping the No identifier so selected rows cannot be traced."
+  ],
+  "axis_definitions": {
+    "factual_accuracy": "QoQ variance and risk flags are calculated from the compact population's Q2/Q3 values.",
+    "professional_judgment": "The sample is sized sensibly, prioritizes risk, and balances coverage across divisions and countries.",
+    "evidence_grounding": "Selected rows are traceable to source No identifiers and rationales match source facts.",
+    "completeness": "Required tabs, variance analysis, selected sample, flags, and rationales are present.",
+    "format_regulatory_compliance": "The deliverable is a parseable .xlsx saved at deliverable/Sample.xlsx.",
+    "clarity": "Workings and rationales are easy for an audit reviewer to follow."
+  },
+  "llm_judge_reference": {
+    "task_goal": "Score a compact AFC KRI audit-sampling workbook for risk-based sample quality and traceable spreadsheet work.",
+    "hidden_reference": "Top-band answers produce a real Sample.xlsx with sample-size workings, variance analysis, and a 12-30 row risk-based selected sample that covers at least three divisions and three countries while preserving No identifiers.",
+    "credit": ["Parseable workbook", "Variance calculations", "Risk-justified row selection", "Coverage", "Traceable rationale"],
+    "penalize": ["No deliverable", "Selecting all rows", "Missing identifiers", "Unjustified selections"]
+  }
+}

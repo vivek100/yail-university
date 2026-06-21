@@ -1,0 +1,1 @@
+from gdpval_generic_grader import grade

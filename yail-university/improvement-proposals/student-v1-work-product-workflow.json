@@ -1,0 +1,48 @@
+{
+  "change_id": "student-v1-work-product-workflow",
+  "parent_versions": {
+    "student": "student-v0",
+    "environment": "yail-gdpval:v3",
+    "taskset": "yail-gdpval-smoke"
+  },
+  "target": "agent_config",
+  "failure_evidence": [
+    {
+      "trace_id": "b002338c-c79e-40df-8fc7-662c49c3c3fa",
+      "task_id": "acct-afc-audit-sampling",
+      "reward": 0.0,
+      "qa_finding": "Full QA failure_analysis exceeded the model context limit, so no trusted detailed RCA is available yet.",
+      "evidence": "The HUD run completed with status=completed, stop_reason=done, reward=0.0, agent_steps=17, max_steps=40, and no platform error. The task asks for a native workbook with sample-size calculation, variance computation, risk-based sample selection, traceable row identifiers, and selected-row flags.",
+      "fault": "agent"
+    },
+    {
+      "trace_id": "c9c0dbcb-1f60-430f-9881-67a602fb332e",
+      "task_id": "medsec-pathology-forms",
+      "reward": 0.0,
+      "qa_finding": "The QA run hit hosted session-detach, so no trusted detailed RCA is available yet.",
+      "evidence": "The HUD run completed with status=completed, stop_reason=done, reward=0.0, agent_steps=11, max_steps=30, and no platform error. The task asks for a native workbook with one sheet per lab, only that lab's patients, required patient fields, and lab/month headers.",
+      "fault": "agent"
+    }
+  ],
+  "proposed_change": "Add a general professional work-product workflow system prompt for student-v1. The prompt teaches the student to inspect reference files, identify the required deliverable path, build native spreadsheet outputs, verify the generated artifact by reopening it, and only then finish. It does not include hidden answers, rubric details, or task-specific gold values.",
+  "files_to_change": [
+    "trainingPlan/hud-hackathon/yail-university/versions/student-v1/agent.md"
+  ],
+  "patch_summary": "Replace the student-v1 placeholder with a transferable workflow prompt for spreadsheet and business work-product tasks.",
+  "risk": "The added workflow may consume more steps and could over-focus the student on spreadsheet deliverables. Validate against one_deal so the prompt does not regress interactive business tasks.",
+  "validation_plan": [
+    "Run student-v1 on medsec-pathology-forms as the first short GDPval validation.",
+    "If medsec improves or completes cleanly, run student-v1 on acct-afc-audit-sampling.",
+    "Run one_deal_ai_workflow_business as a non-regression check.",
+    "Exclude or rerun save_the_account_routing_bug if hosted session-detach repeats.",
+    "If reward improves, run QA Evaluator false-positive and reward-hacking checks before promotion."
+  ],
+  "promotion_rule": "Accept student-v1 only if completed-run GDPval reward improves over student-v0, one_deal_ai_workflow_business does not regress, invalid hosted runs are excluded or rerun, and QA Evaluator finds no false positive or reward hacking.",
+  "rejection_conditions": [
+    "The prompt leaks hidden answers or task-specific gold values.",
+    "GDPval reward remains 0.0 on completed runs.",
+    "one_deal_ai_workflow_business regresses from reward 1.0.",
+    "Improvement comes from a grader or task change rather than the student prompt.",
+    "Hosted runs are invalid and cannot be distinguished from student behavior."
+  ]
+}

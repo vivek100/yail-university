@@ -1,0 +1,154 @@
+{
+  "bundle_id": "context-bundle-001",
+  "created_at": "2026-06-21",
+  "purpose": "First Improvement Teacher input bundle for YAIL graduation baseline.",
+  "target_role": "Customer Support Operations Worker",
+  "parent_student_version": "student-v0",
+  "intended_child_version": "student-v1",
+  "allowed_change_targets": [
+    "agent_config"
+  ],
+  "disallowed_change_targets_for_first_mvp": [
+    "environment",
+    "task",
+    "grader",
+    "model_weights"
+  ],
+  "source_scorecard": "../../results/yail-scorecard-graduation-haiku-baseline-20260621.json",
+  "baseline_summary": {
+    "preset": "graduation",
+    "remote": true,
+    "student_model": "claude-haiku-4-5",
+    "pass_threshold": 1.0,
+    "counts": {
+      "passed": 1,
+      "failed": 2,
+      "invalid_run": 1,
+      "unknown": 0
+    },
+    "completed_runs": 3,
+    "total_traces": 4,
+    "mean_reward_completed_only": 0.3333333333333333,
+    "success_rate_completed_only": 0.3333333333333333
+  },
+  "failed_tasks": [
+    {
+      "suite": "student-gdpval",
+      "stage": "course",
+      "task_id": "acct-afc-audit-sampling",
+      "source": "yail-gdpval-smoke",
+      "repo": "yail-gdpval",
+      "job_id": "bfb5e2f6-be78-4097-9aef-16faa309f337",
+      "job_url": "https://hud.ai/jobs/bfb5e2f6-be78-4097-9aef-16faa309f337",
+      "trace_id": "b002338c-c79e-40df-8fc7-662c49c3c3fa",
+      "status": "completed",
+      "reward": 0.0,
+      "bucket": "failed",
+      "agent_steps": 17,
+      "max_steps": 40,
+      "stop_reason": "done",
+      "description": "Course task: audit sampling workbook deliverable.",
+      "initial_interpretation": "Valid completed student failure. Do not call this a platform error."
+    },
+    {
+      "suite": "student-gdpval",
+      "stage": "course",
+      "task_id": "medsec-pathology-forms",
+      "source": "yail-gdpval-smoke",
+      "repo": "yail-gdpval",
+      "job_id": "e36b5bb8-f07b-424c-97d9-c02cb7a22f02",
+      "job_url": "https://hud.ai/jobs/e36b5bb8-f07b-424c-97d9-c02cb7a22f02",
+      "trace_id": "c9c0dbcb-1f60-430f-9881-67a602fb332e",
+      "status": "completed",
+      "reward": 0.0,
+      "bucket": "failed",
+      "agent_steps": 11,
+      "max_steps": 30,
+      "stop_reason": "done",
+      "description": "Course task: pathology forms workbook deliverable.",
+      "initial_interpretation": "Valid completed student failure. Do not call this a platform error."
+    }
+  ],
+  "passed_regression_tasks": [
+    {
+      "suite": "student-autobiz",
+      "stage": "capstone",
+      "task_id": "one_deal_ai_workflow_business",
+      "source": "yail-autobiz-smoke",
+      "repo": "yail-autobiz",
+      "job_id": "d7e67460-11e5-4d2d-aaf1-fcc2379fb148",
+      "job_url": "https://hud.ai/jobs/d7e67460-11e5-4d2d-aaf1-fcc2379fb148",
+      "trace_id": "4cf99820-915e-43b2-a7b6-14807e8b5eca",
+      "status": "completed",
+      "reward": 1.0,
+      "bucket": "passed",
+      "agent_steps": 4,
+      "max_steps": 12,
+      "stop_reason": "done",
+      "description": "Student capstone: make a truthful offer and deliver a verified workflow."
+    }
+  ],
+  "invalid_runs": [
+    {
+      "suite": "student-autobiz",
+      "stage": "capstone",
+      "task_id": "save_the_account_routing_bug",
+      "source": "yail-autobiz-smoke",
+      "repo": "yail-autobiz",
+      "job_id": "6301199e-c615-4773-9e53-8a219957ff15",
+      "job_url": "https://hud.ai/jobs/6301199e-c615-4773-9e53-8a219957ff15",
+      "trace_id": "cd287465-f6f2-4daa-90d0-89dffaf32034",
+      "status": "running",
+      "reward": null,
+      "bucket": "invalid_run",
+      "error": "Hosted modal rollout failed: Instance <Trace ...> is not bound to a Session; attribute refresh operation cannot proceed.",
+      "decision": "Exclude from completed-run quality metrics and rerun later if needed."
+    }
+  ],
+  "qa_evaluator_attempts": [
+    {
+      "job_id": "c6efb4ec-afda-4d98-9fc0-097d64fe69c2",
+      "task_id": "yail-grad-acct-audit-failure-analysis",
+      "review_trace_id": "a6019a81-702f-428d-bff8-8d68e2a25392",
+      "status": "error",
+      "reward": 0.0,
+      "error": "prompt is too long: 213623 tokens > 200000 maximum",
+      "decision": "Use lightweight or context-budgeted QA path for large GDPval traces."
+    },
+    {
+      "job_id": "c6efb4ec-afda-4d98-9fc0-097d64fe69c2",
+      "task_id": "yail-grad-medsec-failure-analysis",
+      "review_trace_id": "687f4ad7-f714-4b72-811f-df469651daf6",
+      "status": "error",
+      "reward": null,
+      "error": "Hosted modal rollout failed: Trace not bound to a Session",
+      "decision": "Invalid hosted QA run, not a QA verdict."
+    },
+    {
+      "job_id": "c6efb4ec-afda-4d98-9fc0-097d64fe69c2",
+      "task_id": "yail-grad-one-deal-false-positive",
+      "review_trace_id": "9b060732-438f-45de-8723-4ad4f480c6a5",
+      "status": "error",
+      "reward": null,
+      "error": "Hosted modal rollout failed: Trace not bound to a Session",
+      "decision": "Invalid hosted QA run, not a QA verdict."
+    }
+  ],
+  "staged_qa_followup_tasks": [
+    "yail-grad-acct-audit-light-analysis",
+    "yail-grad-medsec-light-analysis"
+  ],
+  "initial_hypothesis_for_improvement_teacher": {
+    "target": "agent_config",
+    "rationale": "Both GDPval failures completed with reward 0.0 and no platform error. Until QA proves a task/grader defect, the first safe intervention is a general work-product workflow prompt that teaches file inspection, spreadsheet generation, and verification discipline.",
+    "first_patch_file": "../versions/student-v1/agent.md"
+  },
+  "validation_plan": [
+    "Run student-v1 on acct-afc-audit-sampling.",
+    "Run student-v1 on medsec-pathology-forms.",
+    "Run student-v1 on one_deal_ai_workflow_business as a non-regression check.",
+    "Exclude or rerun save_the_account_routing_bug if hosted session-detach repeats.",
+    "If GDPval reward improves, run QA Evaluator false-positive/reward-hacking checks before promotion."
+  ],
+  "promotion_rule": "Accept student-v1 only if completed-run GDPval reward improves over student-v0, one_deal does not regress, invalid hosted runs are excluded or rerun, and QA Evaluator finds no false positive or reward hacking."
+}

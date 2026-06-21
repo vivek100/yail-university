@@ -1,0 +1,53 @@
+{
+  "change_id": "env-v7-grader-observability-and-import-fix",
+  "created_at": "2026-06-21",
+  "created_by": "codex-engineering-loop",
+  "parent_versions": {
+    "environment": "yail-gdpval:v5",
+    "student": "student-v1"
+  },
+  "target": "environment",
+  "failure_evidence": [
+    {
+      "scorecard": "../../results/yail-scorecard-student-v1-medsec-validation-after-judge-fallback-20260621.json",
+      "trace_id": "abeaf00e-b65e-4670-80c5-dc21d25e9d27",
+      "observed_reward": 0.0,
+      "finding": "student created and verified a correct-looking workbook, but env returned only scalar 0.0"
+    },
+    {
+      "scorecard": "../../results/yail-scorecard-student-v1-medsec-validation-after-evalresult-v6-20260621.json",
+      "trace_id": "bdad831a-429a-4d82-bbeb-619792df30e7",
+      "observed_reward": 0.0,
+      "finding": "after EvaluationResult telemetry, hosted grader reported ModuleNotFoundError(\"No module named 'deliverable_io'\")"
+    }
+  ],
+  "proposed_change": {
+    "summary": "Preserve grader diagnostics in HUD v6 traces and make synced grader_source imports robust in hosted execution.",
+    "changes": [
+      "env._to_eval returns EvaluationResult with content, info, and subscores instead of a bare float",
+      "env._load_grader adds APP_ROOT and task_dir to sys.path before executing grader_source",
+      "env._load_grader preloads deliverable_io and native_grading from APP_ROOT",
+      "deliverable_io.read_xlsx closes openpyxl workbooks after reading",
+      "native_grading awaits combine(...) and falls back to deterministic-only scores when LLMJudgeGrader errors"
+    ]
+  },
+  "files_changed": [
+    "../../../repos/yail-gdpval/env.py",
+    "../../../repos/yail-gdpval/native_grading.py",
+    "../../../repos/yail-gdpval/deliverable_io.py"
+  ],
+  "validation": {
+    "deployed_environment": "yail-gdpval:v7",
+    "hud_environment_id": "e3aa769a-9ff2-4cec-9a5d-cdbddd940d91",
+    "scorecard": "../../results/yail-scorecard-student-v1-medsec-validation-after-import-fix-v7-20260621.json",
+    "job_id": "73409774b9ab44868c15e6e7e72da9f1",
+    "trace_id": "176ff833-d173-4fed-88af-7b9305e7651c",
+    "reward": 0.5225,
+    "deterministic_score": 0.95,
+    "status": "accepted_as_measurement_fix"
+  },
+  "promotion_rule": {
+    "accepted": true,
+    "reason": "This restores grader observability and nonzero deterministic rewards without weakening the task or changing hidden answers."
+  }
+}

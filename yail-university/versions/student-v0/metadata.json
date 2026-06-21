@@ -1,0 +1,19 @@
+{
+  "version_id": "student-v0",
+  "parent_version_id": null,
+  "status": "baseline",
+  "role": "Customer Support Operations Worker",
+  "agent_type": "claude",
+  "model": "claude-haiku-4-5",
+  "system_prompt_file": null,
+  "agent_file": "agent.md",
+  "created_by": "manual-baseline",
+  "created_at": "2026-06-21",
+  "source_scorecard": "../../results/yail-scorecard-graduation-haiku-baseline-20260621.json",
+  "source_qa_findings": [],
+  "allowed_tools": "HUD-hosted claude defaults",
+  "notes": [
+    "This is the default hosted HUD Claude student with no YAIL-specific system prompt.",
+    "Use this as the parent for the first Improvement Teacher patch."
+  ]
+}

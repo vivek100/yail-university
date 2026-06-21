@@ -1,0 +1,17 @@
+{
+  "source": "yail-gdpval-smoke",
+  "agent_type": "claude",
+  "model": "claude-haiku-4-5",
+  "all": false,
+  "task_ids": [
+    "acct-afc-audit-sampling"
+  ],
+  "max_concurrent": 1,
+  "max_steps": 40,
+  "remote": true,
+  "agent_config": {
+    "claude": {
+      "system_prompt": "Replace this value with the contents of ../versions/student-v1/agent.md before running hud eval --from-json."
+    }
+  }
+}

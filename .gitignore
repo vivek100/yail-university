@@ -1,0 +1,41 @@
+# Local secrets
+.env
+.env.*
+env.local
+*.secret
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+*.log
+
+# JavaScript
+node_modules/
+dist/
+.vite/
+
+# HUD/local runtime artifacts
+results/
+traces/
+tmp*/
+workspace/
+repos/**/.hud_eval.toml
+repos/**/.hud/
+repos/**/.venv/
+repos/**/tmp_*/
+repos/**/workspace/
+repos/**/*serve*.log
+repos/hud-blank/
+repos/yail-trace-explorer-v6/
+!**/.env.example
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

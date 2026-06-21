@@ -1,0 +1,29 @@
+{
+  "version_id": "dr-atlas-v1-rl-candidate",
+  "student": "Dr. Atlas",
+  "parent_version_id": "dr-atlas-v0-ledger2-clone",
+  "status": "phd_prompt_candidate_pending_eval",
+  "role": "Customer Support Operations Worker",
+  "agent_type": "claude",
+  "model": "claude-haiku-4-5",
+  "future_trainable_model": "open/small model fork through HUD Training",
+  "system_prompt_file": "agent.md",
+  "created_by": "manual_yail_phd_improvement",
+  "created_at": "2026-06-21",
+  "change_type": "agent_config",
+  "source_version": "../dr-atlas-v0-ledger2-clone",
+  "promotion_decision": "not_evaluated",
+  "required_validation_before_training": [
+    "Run group rollouts on GDPval variants and autonomous-business variants.",
+    "Confirm within-group reward spread; all-one or all-zero groups do not train.",
+    "Run QA Evaluator Teacher on selected successes and failures.",
+    "Exclude held-out board exam traces from SFT/RL data.",
+    "Only fork/train after reward spread and task diversity are proven."
+  ],
+  "notes": [
+    "Prompt-only improvement to produce more teachable traces.",
+    "No model weights were changed.",
+    "Do not claim PhD/RL completion until HUD Training produces a real checkpoint.",
+    "The first trainable fork should be evaluated against dr-atlas-v0 and Ledger-2 on held-out tasks."
+  ]
+}

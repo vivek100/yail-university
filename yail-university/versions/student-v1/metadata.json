@@ -1,0 +1,36 @@
+{
+  "version_id": "student-v1",
+  "parent_version_id": "student-v0",
+  "status": "promotion_candidate_pending_qa",
+  "role": "Customer Support Operations Worker",
+  "agent_type": "claude",
+  "model": "claude-haiku-4-5",
+  "system_prompt_file": "agent.md",
+  "agent_file": "agent.md",
+  "created_by": "improvement-teacher-v0",
+  "created_at": "2026-06-21",
+  "source_scorecard": "../../results/yail-scorecard-graduation-haiku-baseline-20260621.json",
+  "source_qa_findings": [
+    "../../improvement-proposals/context-bundle-001.json",
+    "../../improvement-proposals/student-v1-work-product-workflow.json"
+  ],
+  "allowed_tools": "HUD-hosted claude defaults",
+  "validation_scorecard": "../../results/yail-scorecard-student-v1-acct-validation-fixed-env-v7-20260621.json",
+  "validation_scorecards": [
+    "../../results/yail-scorecard-student-v1-medsec-validation-after-import-fix-v7-20260621.json",
+    "../../results/yail-scorecard-student-v0-medsec-validation-fixed-env-v7-20260621.json",
+    "../../results/yail-scorecard-student-v1-acct-validation-fixed-env-v7-20260621.json",
+    "../../results/yail-scorecard-student-v0-acct-validation-fixed-env-v7-20260621.json",
+    "../../results/yail-scorecard-student-v1-one-deal-regression-20260621.json"
+  ],
+  "promotion_decision": "candidate_pending_qa_and_full_gate",
+  "notes": [
+    "First patch is an agent_config/system_prompt change only.",
+    "Do not change model weights, environment code, task prompts, or graders for student-v1 unless a later QA bundle proves the task itself is defective.",
+    "Hosted prompt routing was validated with --student-system-prompt-file.",
+    "On fixed GDPval v7 medsec validation, student-v1 scored 0.5225 and student-v0 also scored 0.5225.",
+    "On fixed GDPval v7 acct validation, student-v1 improved from student-v0 0.369 to 0.4275.",
+    "On one_deal capstone regression, student-v1 scored 1.0.",
+    "Promotion requires QA Evaluator review and a full gate before final acceptance."
+  ]
+}
