@@ -9,7 +9,7 @@ DIST_DIR = Path(__file__).parent / "yail-university-ui" / "dist"
 image = (
     modal.Image.debian_slim()
     .pip_install("fastapi")
-    .add_local_dir(DIST_DIR, remote_path="/assets")
+    .add_local_dir(DIST_DIR, remote_path="/assets", copy=True)
 )
 
 app = modal.App(APP_NAME)

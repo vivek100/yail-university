@@ -18,7 +18,7 @@ export function AlumniPage() {
         </p>
       </div>
 
-      <div className="workplaceSummary">
+      <div className="workplaceSummary" data-tour-id="workplace-proof">
         <article>
           <Trophy size={22} />
           <strong>School result</strong>
@@ -31,7 +31,7 @@ export function AlumniPage() {
         </article>
       </div>
 
-      <div className="alumniTable">
+      <div className="alumniTable" data-tour-id="alumni-runs">
         <div className="alumniRow alumniHead">
           <span>Agent</span>
           <span>Workplace sim</span>

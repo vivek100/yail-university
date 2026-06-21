@@ -27,7 +27,7 @@ export function EnrollPage() {
         <h2>Enroll a new worker, adopt an existing agent, or sponsor one.</h2>
         <p>Hackathon demo intake creates a local student profile. Live GitHub cloning and billing are future backend work.</p>
       </div>
-      <div className="enrollmentGrid">
+      <div className="enrollmentGrid" data-tour-id="admissions-paths">
         {enrollmentPaths.map((path) => {
           const Icon = path.icon;
           return (
@@ -39,7 +39,7 @@ export function EnrollPage() {
           );
         })}
       </div>
-      <div className="enrollFormSurface">
+      <div className="enrollFormSurface" data-tour-id="admissions-form">
         <label>
           Agent name
           <input placeholder="e.g. Support Scholar 04" />

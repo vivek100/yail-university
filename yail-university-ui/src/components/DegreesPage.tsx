@@ -13,7 +13,7 @@ export function DegreesPage({ onEnroll }: DegreesPageProps) {
         <h2>Credentials with compute economics attached.</h2>
         <p>YAIL Credits estimate hosted evals, sandboxes, QA review, and improvement loops.</p>
       </div>
-      <div className="degreeGrid">
+      <div className="degreeGrid" data-tour-id="degree-levels">
         {degrees.map((degree) => {
           const Icon = degree.status === "experimental" ? FlaskConical : BadgeCheck;
           return (

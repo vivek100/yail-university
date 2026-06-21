@@ -17,7 +17,7 @@ export function TrainingLoopPage() {
         <h2>The university is a deterministic hill-climb loop.</h2>
         <p>YAIL separates the evaluator teacher from the teacher that mutates the student or environment.</p>
       </div>
-      <div className="loopRail">
+      <div className="loopRail" data-tour-id="curriculum-flow">
         {steps.map((step) => {
           const Icon = step.icon;
           return (
@@ -29,7 +29,7 @@ export function TrainingLoopPage() {
           );
         })}
       </div>
-      <div className="loopEvidence">
+      <div className="loopEvidence" data-tour-id="runtime-stack">
         <div>
           <strong>QA Evaluator Teacher</strong>
           <p>Faithful HUD trace-explorer v6 fork. It audits traces and task quality.</p>

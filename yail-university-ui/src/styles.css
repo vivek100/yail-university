@@ -1200,10 +1200,11 @@ button {
 .tourProgress {
   gap: 7px;
   margin-top: 16px;
+  flex-wrap: wrap;
 }
 
 .tourDot {
-  width: 28px;
+  width: 22px;
   height: 8px;
   padding: 0;
   background: #e4dfd2;
@@ -1213,6 +1214,27 @@ button {
 
 .tourDot.active {
   background: #8c1d24;
+}
+
+.tourLinks {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.tourLinks a {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 7px 10px;
+  color: #12616b;
+  background: #eef6f5;
+  border: 1px solid #c8dddd;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .tourActions {

@@ -10,64 +10,137 @@ interface TourStep {
   body: string;
   actionLabel: string;
   studentId?: string;
+  links?: { label: string; href: string }[];
 }
 
 const tourSteps: TourStep[] = [
   {
     id: "campus",
-    title: "This is the campus",
+    title: "What is YAIL University?",
     section: "home",
     target: "campus",
     actionLabel: "Start at home",
     body:
-      "YAIL University is a school for AI workers. Agents enroll, take HUD tasks, get trace reviews, improve through teacher agents, and only graduate after held-out checks."
+      "YAIL University is a school for AI workers. The idea is simple: do not ship an agent cold. Enroll it, test it on real HUD environments, review the traces, improve the agent, and only graduate it when held-out checks pass."
   },
   {
-    id: "evidence",
-    title: "The proof strip",
-    section: "home",
-    target: "evidence",
-    actionLabel: "Show evidence",
+    id: "levels",
+    title: "Levels are promotion gates",
+    section: "degrees",
+    target: "degree-levels",
+    actionLabel: "Show degree catalog",
     body:
-      "These are the demo anchors: the HUD GDPval environment, the trace QA teacher, the student model, and the current strongest proof from real HUD runs."
+      "The school has levels: Certificate, Diploma, Degree, Residency, and PhD. The higher levels cost more because they require more hosted evals, sandboxes, trace review, and eventually model training."
   },
   {
     id: "curriculum",
-    title: "Courses are benchmark tasksets",
+    title: "Curriculum means tasksets",
     section: "curriculum",
     target: "curriculum-grid",
     actionLabel: "Open courses",
     body:
-      "A course is not a lecture. It is a bundle of HUD tasks, graders, trace audits, and promotion criteria. GDPval supplies real professional work, and business sims test workplace behavior."
+      "A YAIL course is not a lesson page. It is a bundle of HUD tasks, data, graders, QA checks, and promotion criteria. GDPval supplies professional work tasks; autonomous-business supplies workplace simulations."
+  },
+  {
+    id: "admissions",
+    title: "How an agent enrolls",
+    section: "enroll",
+    target: "admissions-paths",
+    actionLabel: "Open admissions",
+    body:
+      "An agent can start from scratch, come from an existing GitHub repo, or be sponsored for a business domain. Enrollment chooses the role, degree target, track, and baseline model."
+  },
+  {
+    id: "flow",
+    title: "How agents move through school",
+    section: "loop",
+    target: "curriculum-flow",
+    actionLabel: "Show training loop",
+    body:
+      "The agent takes HUD tasks, gets scored, then a QA teacher reviews whether the trace and task are trustworthy. If the result is valid, an improvement teacher proposes the next prompt, tool, environment, or model version."
+  },
+  {
+    id: "runtime",
+    title: "HUD runs the school, Modal hosts the campus",
+    section: "loop",
+    target: "runtime-stack",
+    actionLabel: "Show runtimes",
+    body:
+      "HUD is where the real agent work happens: environments, tasksets, traces, scores, and training. Modal hosts this frontend so judges can click through the university as a public web app.",
+    links: [{ label: "Modal app", href: "https://shukla-vivek1993--yail-university-web.modal.run" }]
   },
   {
     id: "dashboard",
-    title: "Registrar dashboard",
+    title: "The registrar dashboard",
     section: "dashboard",
     target: "student-dashboard",
     actionLabel: "Open dashboard",
-    studentId: "dr-atlas",
+    studentId: "ledger-2",
     body:
-      "This table shows enrolled agents like students. Each row has current level, target level, enrolled courses, active version, latest result, and what the agent needs next."
+      "This is the operating view. Each row is an enrolled agent with current level, target level, courses, version, latest result, and the next required gate."
   },
   {
-    id: "student",
-    title: "Student record",
+    id: "graduate",
+    title: "Graduate journey: Ledger-2",
+    section: "dashboard",
+    target: "student-record",
+    actionLabel: "Inspect Ledger-2",
+    studentId: "ledger-2",
+    body:
+      "Ledger-2 is the clearest graduate-style story. It started from a baseline worker, got a QA-guided work-product workflow update, improved on the GDPval audit course, did not regress on Medsec, and passed the business capstone."
+  },
+  {
+    id: "graduate-results",
+    title: "Ledger-2 results are trace-backed",
+    section: "dashboard",
+    target: "student-results",
+    actionLabel: "Show Ledger scores",
+    studentId: "ledger-2",
+    body:
+      "The score cards are not marketing numbers. They link to HUD jobs and traces. Ledger-2 improved acct audit from 0.3690 to 0.4275 and passed the autonomous-business capstone at 1.0.",
+    links: [{ label: "Ledger capstone trace", href: "https://www.hud.ai/trace/0b699289-8cd2-4713-a978-b466b6a3b485" }]
+  },
+  {
+    id: "workplace",
+    title: "Graduates go to workplace sims",
+    section: "alumni",
+    target: "alumni-runs",
+    actionLabel: "Show alumni outcomes",
+    body:
+      "Graduation is not the end. Alumni agents enter autonomous-business workplace simulations. A business failure becomes retraining data instead of a silent production incident."
+  },
+  {
+    id: "phd",
+    title: "PhD journey: Dr. Atlas",
     section: "dashboard",
     target: "student-record",
     actionLabel: "Inspect Dr. Atlas",
     studentId: "dr-atlas",
     body:
-      "The student record links scores to HUD jobs and traces. Dr. Atlas has a real Qwen3-30B PPO checkpoint, but it is not a graduate because the post-training rerun did not improve."
+      "Dr. Atlas is the research track. It was cloned from Ledger-2, then used to test whether a trainable open model can get a real HUD Training update from GDPval rollouts."
   },
   {
-    id: "loop",
-    title: "The training loop",
-    section: "loop",
-    target: "training-loop",
-    actionLabel: "Show loop",
+    id: "phd-results",
+    title: "The PhD result is honest",
+    section: "dashboard",
+    target: "student-results",
+    actionLabel: "Show PhD scores",
+    studentId: "dr-atlas",
     body:
-      "YAIL separates two teachers: a QA evaluator that decides whether the trace is trustworthy, and an improvement teacher that proposes a bounded next version. Promotion requires measured improvement."
+      "Dr. Atlas produced a real Qwen3-30B PPO checkpoint on HUD Training, but it did not graduate. The post-training rerun failed, so the next step is broader GDPval training data and safer evaluation gates.",
+    links: [
+      { label: "Training job", href: "https://hud.ai/jobs/fccd2c5000524e7183af8c25a002cce8" },
+      { label: "Post-RL trace", href: "https://www.hud.ai/trace/f5e1e609-f599-45f1-a835-d62d81ee7ba4" }
+    ]
+  },
+  {
+    id: "end",
+    title: "End state",
+    section: "home",
+    target: "evidence",
+    actionLabel: "Return home",
+    body:
+      "That is the demo: a university-shaped agent improvement system, with HUD as the evaluation and training layer, Modal as the public campus, Ledger-2 as a passing worker, and Dr. Atlas as the next RL frontier."
   }
 ];
 
@@ -152,6 +225,15 @@ export function GuidedTour({ active, onStart, onClose, onNavigate }: GuidedTourP
       </div>
       <h2>{step.title}</h2>
       <p>{step.body}</p>
+      {step.links?.length ? (
+        <div className="tourLinks">
+          {step.links.map((link) => (
+            <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
       <div className="tourProgress" aria-hidden="true">
         {tourSteps.map((item, stepIndex) => (
           <button

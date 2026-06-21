@@ -32,7 +32,7 @@ export function StudentDetail({ student }: StudentDetailProps) {
             <ShieldCheck size={19} />
             Course Record
           </h3>
-          <div className="scoreList">
+          <div className="scoreList" data-tour-id="student-results">
             {student.scores.map((score) => (
               <div className="scoreRow" key={`${score.label}-${score.task}`}>
                 <div>
@@ -118,7 +118,7 @@ export function StudentDetail({ student }: StudentDetailProps) {
         </article>
       ) : null}
       {student.transcript?.length ? (
-        <article className="detailPanel transcriptPanel">
+        <article className="detailPanel transcriptPanel" data-tour-id="run-evidence">
           <h3>
             <ArrowUpRight size={19} />
             Evaluation Runs
