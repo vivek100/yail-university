@@ -1,10 +1,11 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ArrowRight, BookOpen, BriefcaseBusiness, GraduationCap, LayoutDashboard, ScrollText, UserPlus } from "lucide-react";
 import { AlumniPage } from "./components/AlumniPage";
 import { CurriculumPage } from "./components/CurriculumPage";
 import { DashboardPage } from "./components/DashboardPage";
 import { DegreesPage } from "./components/DegreesPage";
 import { EnrollPage } from "./components/EnrollPage";
+import { GuidedTour } from "./components/GuidedTour";
 import { HomePage } from "./components/HomePage";
 import { StudentDetail } from "./components/StudentDetail";
 import { TrainingLoopPage } from "./components/TrainingLoopPage";
@@ -24,15 +25,22 @@ const navItems: { id: SectionId; label: string; icon: React.ElementType }[] = [
 export function App() {
   const [section, setSection] = useState<SectionId>("home");
   const [selectedStudentId, setSelectedStudentId] = useState("ledger-2");
+  const [tourActive, setTourActive] = useState(false);
   const selectedStudent = useMemo(
     () => students.find((student) => student.id === selectedStudentId) ?? students[0],
     [selectedStudentId]
   );
+  const navigate = useCallback((nextSection: SectionId, studentId?: string) => {
+    setSection(nextSection);
+    if (studentId) {
+      setSelectedStudentId(studentId);
+    }
+  }, []);
 
   return (
     <div className="app">
       <header className="topbar">
-        <button className="brand" onClick={() => setSection("home")} type="button">
+        <button className="brand" onClick={() => navigate("home")} type="button">
           <span className="crest">Y</span>
           <span>
             <strong>YAIL University</strong>
@@ -46,7 +54,7 @@ export function App() {
               <button
                 className={section === item.id ? "navButton active" : "navButton"}
                 key={item.id}
-                onClick={() => setSection(item.id)}
+                onClick={() => navigate(item.id)}
                 type="button"
                 title={item.label}
               >
@@ -59,7 +67,7 @@ export function App() {
       </header>
 
       <main>
-        {section === "home" && <HomePage onNavigate={setSection} />}
+        {section === "home" && <HomePage onNavigate={navigate} onStartTour={() => setTourActive(true)} />}
         {section === "curriculum" && <CurriculumPage />}
         {section === "degrees" && <DegreesPage onEnroll={() => setSection("enroll")} />}
         {section === "enroll" && <EnrollPage />}
@@ -68,7 +76,7 @@ export function App() {
           <DashboardPage
             selectedStudentId={selectedStudentId}
             onSelectStudent={(id) => {
-              setSelectedStudentId(id);
+              navigate("dashboard", id);
               window.setTimeout(() => {
                 document.getElementById("student-record")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }, 0);
@@ -78,6 +86,12 @@ export function App() {
         {section === "loop" && <TrainingLoopPage />}
         {section === "dashboard" && <StudentDetail student={selectedStudent} />}
       </main>
+      <GuidedTour
+        active={tourActive}
+        onClose={() => setTourActive(false)}
+        onNavigate={navigate}
+        onStart={() => setTourActive(true)}
+      />
     </div>
   );
 }

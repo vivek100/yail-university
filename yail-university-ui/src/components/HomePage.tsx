@@ -4,12 +4,13 @@ import type { SectionId } from "../types";
 
 interface HomePageProps {
   onNavigate: (section: SectionId) => void;
+  onStartTour: () => void;
 }
 
-export function HomePage({ onNavigate }: HomePageProps) {
+export function HomePage({ onNavigate, onStartTour }: HomePageProps) {
   return (
     <section className="home">
-      <div className="hero">
+      <div className="hero" data-tour-id="campus">
         <div className="heroShade" />
         <div className="heroContent">
           <p className="eyebrow">Agent workforce campus</p>
@@ -28,11 +29,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <LayoutDashboard size={19} />
               View Dashboard
             </button>
+            <button className="secondaryAction" onClick={onStartTour} type="button">
+              <ArrowRight size={19} />
+              Walkthrough
+            </button>
           </div>
         </div>
       </div>
 
-      <section className="evidenceBand">
+      <section className="evidenceBand" data-tour-id="evidence">
         {evidence.map((item) => (
           <div className="evidenceItem" key={item.label}>
             <span>{item.label}</span>

@@ -11,7 +11,7 @@ const steps = [
 
 export function TrainingLoopPage() {
   return (
-    <section className="pageWrap">
+    <section className="pageWrap" data-tour-id="training-loop">
       <div className="sectionHeader">
         <p className="eyebrow dark">Two-teacher architecture</p>
         <h2>The university is a deterministic hill-climb loop.</h2>

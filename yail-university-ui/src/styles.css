@@ -1130,6 +1130,145 @@ button {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.tourLauncher,
+.tourPanel {
+  position: fixed;
+  right: 22px;
+  z-index: 60;
+  box-shadow: 0 18px 60px rgba(17, 17, 17, 0.18);
+}
+
+.tourLauncher {
+  bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 12px 16px;
+  color: #fff;
+  background: #8c1d24;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.tourPanel {
+  bottom: 20px;
+  width: min(430px, calc(100vw - 32px));
+  padding: 18px;
+  background: #fff;
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  border-radius: 8px;
+}
+
+.tourPanelTop,
+.tourActions,
+.tourProgress,
+.tourPanelTop span,
+.tourJump,
+.iconButton {
+  display: flex;
+  align-items: center;
+}
+
+.tourPanelTop {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tourPanelTop span {
+  gap: 7px;
+  color: #8c1d24;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.tourPanel h2 {
+  margin: 14px 0 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.tourPanel p {
+  margin: 0;
+  color: #4d4b45;
+  line-height: 1.55;
+}
+
+.tourProgress {
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.tourDot {
+  width: 28px;
+  height: 8px;
+  padding: 0;
+  background: #e4dfd2;
+  border: 0;
+  border-radius: 999px;
+}
+
+.tourDot.active {
+  background: #8c1d24;
+}
+
+.tourActions {
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.compact {
+  min-height: 40px;
+  padding: 9px 12px;
+  font-size: 14px;
+}
+
+.secondaryAction.compact {
+  color: #171717;
+  background: #f5f2eb;
+  border-color: #ded8cb;
+}
+
+.secondaryAction.compact:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.tourJump {
+  justify-content: center;
+  width: 100%;
+  min-height: 38px;
+  margin-top: 10px;
+  color: #12616b;
+  background: transparent;
+  border: 1px solid #c8dddd;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.iconButton {
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #171717;
+  background: #f5f2eb;
+  border: 1px solid #ded8cb;
+  border-radius: 8px;
+}
+
+.tourTargetActive {
+  position: relative;
+  outline: 3px solid #d8a832;
+  outline-offset: 8px;
+  box-shadow: 0 0 0 9999px rgba(17, 17, 17, 0.22);
+  transition: outline-color 180ms ease, box-shadow 180ms ease;
+  scroll-margin-top: 104px;
+}
+
 @media (max-width: 1040px) {
   .topbar {
     align-items: flex-start;
@@ -1299,5 +1438,37 @@ button {
   .alumniRow,
   .transcriptRow {
     grid-template-columns: 1fr;
+  }
+
+  .tourLauncher {
+    right: 14px;
+    bottom: 14px;
+    max-width: calc(100vw - 28px);
+  }
+
+  .tourPanel {
+    right: 14px;
+    bottom: 14px;
+    width: calc(100vw - 28px);
+    max-height: calc(100vh - 28px);
+    overflow: auto;
+  }
+
+  .tourPanel h2 {
+    font-size: 25px;
+  }
+
+  .tourActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tourActions .primaryAction {
+    grid-column: 1 / -1;
+  }
+
+  .tourTargetActive {
+    outline-offset: 4px;
+    box-shadow: 0 0 0 9999px rgba(17, 17, 17, 0.18);
   }
 }

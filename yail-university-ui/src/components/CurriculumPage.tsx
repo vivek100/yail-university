@@ -10,7 +10,7 @@ export function CurriculumPage() {
         <h2>Courses that turn generic agents into role-specific operators.</h2>
         <p>Each course maps to HUD tasks, trace review, and explicit promotion criteria.</p>
       </div>
-      <div className="courseGrid">
+      <div className="courseGrid" data-tour-id="curriculum-grid">
         {courses.map((course, index) => {
           const environmentUrl = getEnvironmentUrl(course.environment);
 

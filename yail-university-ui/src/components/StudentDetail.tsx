@@ -8,7 +8,7 @@ interface StudentDetailProps {
 
 export function StudentDetail({ student }: StudentDetailProps) {
   return (
-    <section className="studentDetail" id="student-record">
+    <section className="studentDetail" data-tour-id="student-record" id="student-record">
       <div className="studentHero">
         <div>
           <p className="eyebrow dark">Student record</p>

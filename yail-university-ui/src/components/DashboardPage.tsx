@@ -29,7 +29,7 @@ export function DashboardPage({ selectedStudentId, onSelectStudent }: DashboardP
           </span>
         </div>
       </div>
-      <div className="studentTable">
+      <div className="studentTable" data-tour-id="student-dashboard">
         <div className="studentRow tableHead">
           <span>Student</span>
           <span>Current level</span>
